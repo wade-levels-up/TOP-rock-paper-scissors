@@ -21,9 +21,6 @@ function getComputerChoice() {
 
 getComputerChoice();
 
-if (typeof module === 'object') {
-    module.exports = getComputerChoice;
-}
 // test to see that the above function works as intended using
 // console.log
 // create a jest test to confirm it works as intended
@@ -34,3 +31,32 @@ if (typeof module === 'object') {
 // a variable named choice if the choice is a valid option
 // Ensure that choice variable is all lowercase
 // Have the function return choice
+
+function getHumanChoice() {
+
+    let choice = "";
+    let validChoice = false;
+
+    while (validChoice === false) {
+
+        choice = prompt('Enter: rock, paper or scissors', "").toLowerCase();
+
+        if (choice === 'rock' || choice === 'paper' || choice === 'scissors') {
+            console.log("human chose " + choice);
+            validChoice = true;
+        } else {
+            alert("Invalid choice. Please choose again");
+        }
+    }
+
+    return choice;
+    
+}
+
+console.log(getHumanChoice());
+
+
+if (typeof module === 'object') {
+    module.exports = getComputerChoice;
+    module.exports = getHumanChoice;
+}
