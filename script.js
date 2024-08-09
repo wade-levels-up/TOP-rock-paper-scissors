@@ -1,5 +1,10 @@
 // log Hello World to the console to ensure js file is properly linked.
 
+// Create a variable named humanScore that holds a number, initialized at 0
+let humanScore = 0;
+// Create a variable named computerScore that holds a number, initialized at 0
+let computerScore = 0;
+
 // Create a function called getComputerChoice
 // generate a random number between 1 and 3, included 1 and 3
 // Fill out the function so that it randomly returns 'rock' 'paper
