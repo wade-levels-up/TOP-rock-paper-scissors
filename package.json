@@ -4,11 +4,11 @@
   "description": "The Odin Project excercise / project Create a rock paper scissors game using JavaScript.",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "jest": "^29.7.0"
   }
 }
