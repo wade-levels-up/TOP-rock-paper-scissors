@@ -7,8 +7,16 @@
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
-    return randomNumber;
-    console.log(randomNumber);
+    if (randomNumber === 1) {
+        console.log('rock');
+        return 'rock';
+    } else if (randomNumber === 2) {
+        console.log('paper');
+        return 'paper';
+    } else {
+        console.log('scissors');
+        return 'scissors';
+    }
 }
 
 module.exports = getComputerChoice;
