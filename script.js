@@ -60,31 +60,33 @@ function getHumanChoice() {
 
 function playRound(computerChoice, humanChoice) {
 
-    console.log("Computer chose " + computerChoice);
-    console.log("Player chose " + humanChoice);
-
     if (humanChoice === 'rock' && computerChoice === 'paper'){
-        return "You lose! Paper beats Rock";
         computerScore++
+        return "You lose! Paper beats Rock";
     } else if (humanChoice === 'rock' && computerChoice === 'rock'){
         return "Draw!";
     } else if (humanChoice === 'rock' && computerChoice === 'scissors'){
-        return "You win! Rock beats Scissors";
         humanScore++
+        return "You win! Rock beats Scissors";
+        
     } else if (humanChoice === 'paper' && computerChoice === 'paper') {
         return "Draw!";
     } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+        humanScore++
         return "You win! Paper beats Rock";
-        humanScore++
+        
     } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
+        computerScore++
         return "You lose! Scissors beats Paper";
-        computerScore++
+        
     } else if (humanChoice === 'scissors' && computerChoice === 'rock') {
-        return "You lose! Rock beats Scissors";
         computerScore++
+        return "You lose! Rock beats Scissors";
+        
     } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-        return "You win! Scissors beats Paper";
         humanScore++
+        return "You win! Scissors beats Paper";
+        
     } else if (humanChoice === 'scissors' && computerChoice === 'scissors') {
         return "Draw!";
     } else {
@@ -92,12 +94,28 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
-console.log(playRound(getComputerChoice(),getHumanChoice()));
 
+// Create function named playGame that calls playRound 5 times
+// At the end of 5 rounds it will declare who the winner was
+// And output the scores
 
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(getComputerChoice(),getHumanChoice()));
+    }
+    if (humanScore > computerScore) {
+        console.log(`With a total score of ${humanScore}. You beat the computer who scored ${computerScore}`);
+    } else if (humanScore === computerScore) {
+        console.log(`It's a draw. Your score is ${humanScore} and the computer's score is ${computerScore}`);
+    } else {
+        console.log(`The computer scored: ${computerScore} and you scored: ${humanScore}. You lose`);
+    }
+}
 
+playGame();
 
 if (typeof module === 'object') {
     module.exports = getComputerChoice;
     module.exports = getHumanChoice;
+    module.exports = playRound;
 }
