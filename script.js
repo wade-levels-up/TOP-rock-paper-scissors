@@ -19,7 +19,18 @@ function getComputerChoice() {
     }
 }
 
-module.exports = getComputerChoice;
+getComputerChoice();
+
+if (typeof module === 'object') {
+    module.exports = getComputerChoice;
+}
 // test to see that the above function works as intended using
 // console.log
 // create a jest test to confirm it works as intended
+
+
+// Create a function to get the user's choice
+// Prompt user for an input and store the string in
+// a variable named choice if the choice is a valid option
+// Ensure that choice variable is all lowercase
+// Have the function return choice
