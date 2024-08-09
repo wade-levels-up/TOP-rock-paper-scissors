@@ -24,8 +24,6 @@ function getComputerChoice() {
     }
 }
 
-getComputerChoice();
-
 // test to see that the above function works as intended using
 // console.log
 // create a jest test to confirm it works as intended
@@ -58,7 +56,15 @@ function getHumanChoice() {
     
 }
 
-console.log(getHumanChoice());
+// Create a function named playRound
+// Define two parameters - humanChoice and computerChoice
+// Calculate who won the round based on the choices
+// Log a message to console that communicates who won and why
+// increment humanScore or computerScore depending who won
+
+
+
+
 
 
 if (typeof module === 'object') {
