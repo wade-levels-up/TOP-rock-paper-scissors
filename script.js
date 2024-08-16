@@ -101,6 +101,10 @@ function updateScoreCard() {
     `;
 }
 
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+
 const result = document.querySelector("#result");
 const choices = document.querySelector("#choices");
 const scoreCard = document.createElement("p");
@@ -117,9 +121,22 @@ function playAgain() {
         computerScore = 0;
         result.textContent = '';
         updateScoreCard();
+        enableInputButtons();
         playAgainButton.remove();
     })
     result.appendChild(playAgainButton);
+}
+
+function disableInputButtons() {
+    rockBtn.setAttribute('disabled', 'true');
+    paperBtn.setAttribute('disabled', 'true');
+    scissorsBtn.setAttribute('disabled', 'true');
+}
+
+function enableInputButtons() {
+    rockBtn.removeAttribute('disabled');
+    paperBtn.removeAttribute('disabled');
+    scissorsBtn.removeAttribute('disabled');
 }
 
 choices.addEventListener('click', (e) => {
@@ -137,10 +154,12 @@ choices.addEventListener('click', (e) => {
     }
     updateScoreCard();
     if (computerScore === 5) {
+        disableInputButtons();
         result.textContent = "You lose, the computer was first to win 5 rounds";
         playAgain();
     }
     if (humanScore === 5) {
+        disableInputButtons();
         result.textContent = "You win! You were the first to win 5 rounds";
         playAgain();
     }
