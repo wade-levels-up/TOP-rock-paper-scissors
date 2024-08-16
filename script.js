@@ -94,26 +94,33 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
-
-// Create function named playGame that calls playRound 5 times
-// At the end of 5 rounds it will declare who the winner was
-// And output the scores
-
-// function playGame() {
-//     for (let i = 0; i < 5; i++) {
-//         console.log(playRound(getComputerChoice(),getHumanChoice()));
-//     }
-//     if (humanScore > computerScore) {
-//         console.log(`With a total score of ${humanScore}. You beat the computer who scored ${computerScore}`);
-//     } else if (humanScore === computerScore) {
-//         console.log(`It's a draw. Your score is ${humanScore} and the computer's score is ${computerScore}`);
-//     } else {
-//         console.log(`The computer scored: ${computerScore} and you scored: ${humanScore}. You lose`);
-//     }
-// }
+function updateScoreCard() {
+    scoreCard.textContent = `
+    player wins: ${humanScore} - 
+    computer wins: ${computerScore}
+    `;
+}
 
 const result = document.querySelector("#result");
 const choices = document.querySelector("#choices");
+const scoreCard = document.createElement("p");
+scoreCard.setAttribute('id', 'scoreCard');
+choices.appendChild(scoreCard);
+
+function playAgain() {
+    let playAgainButton = document.createElement("button");
+    playAgainButton.textContent = 'Click To Play Again!';
+    playAgainButton.style.display = 'block';
+    playAgainButton.style.width = "150px";
+    playAgainButton.addEventListener('click', ()=>{
+        humanScore = 0;
+        computerScore = 0;
+        result.textContent = '';
+        updateScoreCard();
+        playAgainButton.remove();
+    })
+    result.appendChild(playAgainButton);
+}
 
 choices.addEventListener('click', (e) => {
     let choice = e.target
@@ -127,6 +134,15 @@ choices.addEventListener('click', (e) => {
         case 'scissors': 
             result.textContent = playRound(getComputerChoice(), 'scissors');
         break;
+    }
+    updateScoreCard();
+    if (computerScore === 5) {
+        result.textContent = "You lose, the computer was first to win 5 rounds";
+        playAgain();
+    }
+    if (humanScore === 5) {
+        result.textContent = "You win! You were the first to win 5 rounds";
+        playAgain();
     }
 })
 
